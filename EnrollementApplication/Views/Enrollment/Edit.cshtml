@@ -62,7 +62,18 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EnrollmentSemester, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EnrollmentSemester, new { htmlAttributes = new { @class = "form-control" } })
+                <div>
+                    @Html.RadioButtonFor(model => model.EnrollmentSemester, "Spring")
+                    @Html.Label("Spring")
+                </div>
+                <div>
+                    @Html.RadioButtonFor(model => model.EnrollmentSemester, "Summer")
+                    @Html.Label("Summer")
+                </div>
+                <div>
+                    @Html.RadioButtonFor(model => model.EnrollmentSemester, "Fall")
+                    @Html.Label("Fall")
+                </div>
                 @Html.ValidationMessageFor(model => model.EnrollmentSemester, "", new { @class = "text-danger" })
             </div>
         </div>
