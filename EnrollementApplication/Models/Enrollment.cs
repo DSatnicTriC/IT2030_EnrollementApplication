@@ -13,8 +13,8 @@ namespace EnrollementApplication.Models
         public virtual int CourseId { get; set; }
         
         [Required]
-        [RegularExpression(@"/^([A-Fa-f])$/")]
-        public virtual decimal Grade { get; set; }
+        [RegularExpression(@"[A-Fa-f]")]
+        public virtual char Grade { get; set; }
         public virtual Student Student { get; set; }
         public virtual Course Course { get; set; }
         public virtual bool IsActive { get; set; }
