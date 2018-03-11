@@ -16,7 +16,7 @@ namespace EnrollementApplication.Models
         [StringLength(50)]
         public virtual string LastName { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Display(Name = "First Name")]
         [Required]
         [StringLength(50)]
         public virtual string FirstName { get; set; }
