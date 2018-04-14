@@ -21,6 +21,20 @@ namespace EnrollementApplication.Controllers
             return View(enrollments.ToList());
         }
 
+        public ActionResult SearchByStudent(string q)
+        {
+            var enrollments = GetEnrollmentsByStudent(q);
+            return PartialView(enrollments);
+        }
+
+        public List<Enrollment> GetEnrollmentsByStudent(string searchString)
+        {
+            var enrollments = db.Enrollments.Include(e => e.Course).Include(e => e.Student)
+                .Where(x => x.Student.FirstName.Contains(searchString) || x.Student.LastName.Contains(searchString))
+                .ToList();
+            return enrollments;
+        }
+
         // GET: Enrollment/Details/5
         public ActionResult Details(int? id)
         {
@@ -49,7 +63,7 @@ namespace EnrollementApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EnrollmentId,StudentId,CourseId,IsActive,AssignedCampus,EnrollmentSemester,EnrollmentYear")] Enrollment enrollment)
+        public ActionResult Create([Bind(Include = "EnrollmentId,StudentId,CourseId,IsActive,AssignedCampus,EnrollmentSemester,EnrollmentYear,Grade")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +99,7 @@ namespace EnrollementApplication.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EnrollmentId,StudentId,CourseId,IsActive,AssignedCampus,EnrollmentSemester,EnrollmentYear")] Enrollment enrollment)
+        public ActionResult Edit([Bind(Include = "EnrollmentId,StudentId,CourseId,IsActive,AssignedCampus,EnrollmentSemester,EnrollmentYear,Grade")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
             {

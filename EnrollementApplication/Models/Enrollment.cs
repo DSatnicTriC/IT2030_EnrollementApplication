@@ -13,7 +13,7 @@ namespace EnrollementApplication.Models
         public virtual int CourseId { get; set; }
         
         [Required]
-        public virtual char Grade { get; set; }
+        public virtual string Grade { get; set; }
         public virtual Student Student { get; set; }
         public virtual Course Course { get; set; }
         public virtual bool IsActive { get; set; }
