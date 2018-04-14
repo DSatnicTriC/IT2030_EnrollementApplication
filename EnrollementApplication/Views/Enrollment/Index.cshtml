@@ -7,19 +7,6 @@
 
 <h2>Index</h2>
 
-<div id="studentOfTheMonth" style="padding-bottom: 15px;">
-    @Ajax.ActionLink("Click to see the student of the month!",
-        "StudentOfTheMonth",
-        null,
-        new AjaxOptions
-        {
-            UpdateTargetId = "studentOfTheMonth",
-            InsertionMode = InsertionMode.Replace,
-            HttpMethod = "GET"
-        },
-        new { @class = "btn btn-primary"})
-</div>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -81,7 +68,3 @@
 }
 
 </table>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryUnobtrusive")
-}
