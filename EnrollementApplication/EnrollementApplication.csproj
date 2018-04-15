@@ -219,6 +219,7 @@
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\Student\_StudentOfTheMonth.cshtml" />
     <Content Include="Views\Enrollment\SearchByStudent.cshtml" />
+    <Content Include="Views\Enrollment\SearchByCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

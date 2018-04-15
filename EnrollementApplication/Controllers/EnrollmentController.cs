@@ -35,6 +35,20 @@ namespace EnrollementApplication.Controllers
             return enrollments;
         }
 
+        public ActionResult SearchByCourse(string q)
+        {
+            var enrollments = GetEnrollmentsByCourse(q);
+            return PartialView(enrollments);
+        }
+
+        public List<Enrollment> GetEnrollmentsByCourse(string searchString)
+        {
+            var enrollments = db.Enrollments.Include(e => e.Course).Include(e => e.Student)
+                .Where(x => x.Course.Title.Contains(searchString) || x.Course.Description.Contains(searchString))
+                .ToList();
+            return enrollments;
+        }
+
         // GET: Enrollment/Details/5
         public ActionResult Details(int? id)
         {
